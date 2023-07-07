@@ -8,6 +8,8 @@ packages = [{include = "awesome_bot"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
+aiogram = "3.0.0b7"
+python-dotenv = "^1.0.0"
 
 
 [build-system]
