@@ -10,6 +10,9 @@ packages = [{include = "awesome_bot"}]
 python = "^3.11"
 aiogram = "3.0.0b7"
 python-dotenv = "^1.0.0"
+sqlalchemy = "^2.0.18"
+alembic = "^1.11.1"
+asyncpg = "^0.28.0"
 
 
 [build-system]
