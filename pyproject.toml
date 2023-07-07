@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "awesome-bot"
+version = "0.1.0"
+description = "Awesome Bot from Toster"
+authors = ["Toster dsodx@pm.me"]
+readme = "README.md"
+packages = [{include = "awesome_bot"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
