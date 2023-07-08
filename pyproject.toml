@@ -13,6 +13,7 @@ python-dotenv = "^1.0.0"
 sqlalchemy = "^2.0.18"
 alembic = "^1.11.1"
 asyncpg = "^0.28.0"
+fluentogram = "^1.1.6"
 
 
 [build-system]
