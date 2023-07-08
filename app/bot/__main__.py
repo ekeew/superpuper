@@ -4,6 +4,7 @@ import logging
 from aiogram import Bot, Dispatcher
 
 from .config import Settings
+from .handlers import get_main_router
 
 
 async def main() -> None:
@@ -17,6 +18,8 @@ async def main() -> None:
 
     bot = Bot(token=config.bot.token.get_secret_value())
     dp = Dispatcher()
+
+    dp.include_router(get_main_router())
 
     try:
         logger.warning("Running bot")
