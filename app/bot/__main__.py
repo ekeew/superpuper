@@ -3,7 +3,7 @@ import logging
 
 from aiogram import Bot, Dispatcher
 
-from .config import Settings
+from app.core.config import Settings
 from .handlers import get_main_router
 
 
