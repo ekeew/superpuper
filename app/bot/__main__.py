@@ -5,6 +5,8 @@ from aiogram import Bot, Dispatcher
 
 from app.core.config import Settings
 from .handlers import get_main_router
+from .translation import get_translator_hub
+from .middlewares import I18nMiddleware
 
 
 async def main() -> None:
@@ -20,6 +22,7 @@ async def main() -> None:
     dp = Dispatcher()
 
     dp.include_router(get_main_router())
+    dp.update.middleware(I18nMiddleware(get_translator_hub()))
 
     try:
         logger.warning("Running bot")
