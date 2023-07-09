@@ -9,9 +9,14 @@ class Postgres(BaseModel):
     dsn: PostgresDsn
 
 
+class Nats(BaseModel):
+    dsn: str
+
+
 class Settings(BaseSettings):
     bot: Bot
     postgres: Postgres
+    nats: Nats
 
     class Config:
         env_file = ".env"
