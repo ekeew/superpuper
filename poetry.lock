@@ -755,6 +755,21 @@ files = [
 ]
 
 [[package]]
+name = "nats-py"
+version = "2.3.1"
+description = "NATS client for Python"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "nats-py-2.3.1.tar.gz", hash = "sha256:3c50a710c8e4753d40db7935ff6a14c797534215267a596cbb64366d1f19d768"},
+]
+
+[package.extras]
+aiohttp = ["aiohttp"]
+fast-parse = ["fast-mail-parser"]
+nkeys = ["nkeys"]
+
+[[package]]
 name = "pydantic"
 version = "1.10.11"
 description = "Data validation and settings management using python type hints"
@@ -1036,4 +1051,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "f1a2cfc0d72dc55b45bba216e253e0e0d14fc28e52e41124a0d7e099f22df313"
+content-hash = "c80418153e4ad983a70819a5ecdb123e8f70ab179391398707b95e6c55e774c2"
