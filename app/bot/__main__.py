@@ -3,11 +3,12 @@ import logging
 
 import nats
 from aiogram import Bot, Dispatcher
+from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
 
 from app.core.config import Settings
 from app.core.workers import sender
 from .handlers import get_main_router
-from .middlewares import I18nMiddleware
+from .middlewares import I18nMiddleware, DbMiddleware
 from .translation import get_translator_hub
 
 
@@ -23,11 +24,15 @@ async def main() -> None:
     bot = Bot(token=config.bot.token.get_secret_value())
     dp = Dispatcher()
 
+    engine = create_async_engine(config.postgres.dsn)
+    session_pool = async_sessionmaker(engine, expire_on_commit=False)
+
     client = await nats.connect([config.nats.dsn])
     stream = client.jetstream()
 
     dp.include_router(get_main_router())
     dp.update.middleware(I18nMiddleware(get_translator_hub()))
+    dp.update.middleware(DbMiddleware(session_pool, config.nats.dsn))
 
     try:
         logger.warning("Running bot")
