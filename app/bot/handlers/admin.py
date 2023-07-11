@@ -17,6 +17,6 @@ def get_admin_router() -> Router:
     config = Settings()
     router = Router()
 
-    router.message.register(cmd_send, Command("send"), F.chat.id.in_(config.admin_ids))
+    router.message.register(cmd_send, Command("send", F.args), F.chat.id.in_(config.admin_ids))
 
     return router
