@@ -1,7 +1,7 @@
 import asyncio
 
 from aiogram import Bot
-from aiogram.exceptions import TelegramRetryAfter
+from aiogram.exceptions import TelegramRetryAfter, TelegramForbiddenError
 from nats.js import JetStreamContext
 
 
@@ -15,3 +15,5 @@ async def main(stream: JetStreamContext, bot: Bot) -> None:
             await msg.ack()
         except TelegramRetryAfter as e:
             await asyncio.sleep(e.retry_after)
+        except TelegramForbiddenError:
+            pass
