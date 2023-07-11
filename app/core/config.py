@@ -1,4 +1,5 @@
 from pydantic import BaseModel, BaseSettings, SecretStr, PostgresDsn, Field
+from pathlib import Path
 
 
 class Bot(BaseModel):
@@ -24,5 +25,5 @@ class Settings(BaseSettings):
         return tuple(map(int, self.admin_ids_raw.split(",")))
 
     class Config:
-        env_file = ".env"
+        env_file = Path(__file__).parent.parent.parent / ".env"
         env_nested_delimiter = "_"
