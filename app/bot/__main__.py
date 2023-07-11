@@ -6,7 +6,7 @@ from aiogram import Bot, Dispatcher
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
 
 from app.core.config import Settings
-from app.core.workers import sender
+from app.core.workers import mailing
 from .handlers import get_main_router
 from .middlewares import I18nMiddleware, DbMiddleware
 from .translation import get_translator_hub
@@ -38,7 +38,7 @@ async def main() -> None:
         logger.warning("Running bot")
         await asyncio.gather(
             dp.start_polling(bot, allowed_updates=dp.resolve_used_update_types()),
-            sender.main(stream, bot)
+            mailing.main(stream, bot)
         )
     finally:
         await client.drain()

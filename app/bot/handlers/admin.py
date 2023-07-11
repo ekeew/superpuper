@@ -10,7 +10,7 @@ from app.core.db import DbRepo
 async def cmd_send(message: Message, command: CommandObject, db: DbRepo, i18n: TranslatorRunner) -> None:
     for user_id in await db.user.get_all_ids():
         await db.worker.send_message(user_id, command.args)
-    await message.answer(i18n.get("success-mail"))
+    await message.answer(i18n.get("success-mailing"))
 
 
 def get_admin_router() -> Router:

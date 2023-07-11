@@ -1,4 +1,4 @@
 
 hello = Привет, мир!
 
-success-mail = Рассылка завершена
+success-mailing = Рассылка завершена

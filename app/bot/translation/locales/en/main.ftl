@@ -1,4 +1,4 @@
 
 hello = Hello, world!
 
-success-mail = Mail completed
+success-mailing = Mailing completed
