@@ -9,5 +9,6 @@ Awesome Bot [from Toster]
 
 ```shell
 poetry install
+poetry run alembic upgrade head
 poetry run python -m app.bot
 ```
