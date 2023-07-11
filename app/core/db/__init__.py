@@ -1,7 +1,7 @@
-from .dao import DbAdapter
+from .dao import DbRepo
 from .base import Base
 
 __all__ = (
-    "DbAdapter",
+    "DbRepo",
     "Base"
 )

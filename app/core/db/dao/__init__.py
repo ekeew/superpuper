@@ -1,5 +1,5 @@
-from .adapter import DbAdapter
+from .repo import DbRepo
 
 __all__ = (
-    "DbAdapter",
+    "DbRepo",
 )
