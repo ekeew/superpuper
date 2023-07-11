@@ -2,12 +2,10 @@ import asyncio
 
 from aiogram import Bot
 from aiogram.exceptions import TelegramRetryAfter
-from nats import NATS
+from nats.js import JetStreamContext
 
 
-async def main(client: NATS, bot: Bot) -> None:
-    stream = client.jetstream()
-
+async def main(stream: JetStreamContext, bot: Bot) -> None:
     sub = await stream.subscribe("send.messages")
     async for msg in sub.messages:
         chat_id = int(msg.headers.get("chat_id"))
