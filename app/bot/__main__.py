@@ -41,7 +41,7 @@ async def main() -> None:
             sender.main(stream, bot)
         )
     finally:
-        await client.close()
+        await client.drain()
         await dp.storage.close()
         logger.warning("Bot stopped")
 

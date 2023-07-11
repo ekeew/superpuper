@@ -23,5 +23,5 @@ class DbMiddleware(BaseMiddleware):
             client = await nats.connect([self.nats_dsn])
             data["db"] = DbRepo(session, client)
             result = await handler(event, data)
-            await client.drain()
+            await client.close()
             return result
