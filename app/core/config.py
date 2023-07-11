@@ -10,7 +10,7 @@ class Postgres(BaseModel):
 
 
 class Nats(BaseModel):
-    dsn: str
+    dsn: str  # So sad.....
 
 
 class Settings(BaseSettings):
