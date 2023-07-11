@@ -10,11 +10,11 @@ def _get_ftl_files(locale_dir: Path) -> list[Path]:
 
 def get_translator_hub() -> TranslatorHub:
     locales_dir = Path(__file__).parent / "locales"
-    translation_hub = TranslatorHub(
+    translator_hub = TranslatorHub(
         {"ru": "ru", "en": "en"},
         [
             FluentTranslator("ru", FluentBundle.from_files("ru-RU", _get_ftl_files(locales_dir / "ru"))),
             FluentTranslator("en", FluentBundle.from_files("en-US", _get_ftl_files(locales_dir / "en"))),
         ]
     )
-    return translation_hub
+    return translator_hub
