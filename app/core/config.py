@@ -1,4 +1,4 @@
-from pydantic import BaseModel, BaseSettings, SecretStr, PostgresDsn
+from pydantic import BaseModel, BaseSettings, SecretStr, PostgresDsn, Field
 
 
 class Bot(BaseModel):
@@ -17,6 +17,11 @@ class Settings(BaseSettings):
     bot: Bot
     postgres: Postgres
     nats: Nats
+    admin_ids_raw: str = Field(env="admin_ids")
+
+    @property
+    def admin_ids(self) -> tuple:
+        return tuple(map(int, self.admin_ids_raw.split(",")))
 
     class Config:
         env_file = ".env"
