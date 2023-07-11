@@ -1,4 +1,4 @@
-from .adapter import DbAdapter
+from .dao import DbAdapter
 from .base import Base
 
 __all__ = (
