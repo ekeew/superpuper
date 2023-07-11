@@ -1,5 +1,6 @@
 import asyncio
 import logging
+from pathlib import Path
 
 import nats
 from aiogram import Bot, Dispatcher
@@ -19,6 +20,7 @@ async def main() -> None:
     )
     logger = logging.getLogger(__name__)
 
+    project_dir = Path(__file__).parent.parent.parent
     config = Settings()
 
     bot = Bot(token=config.bot.token.get_secret_value())
@@ -31,7 +33,7 @@ async def main() -> None:
     stream = client.jetstream()
 
     dp.include_router(get_main_router())
-    dp.update.middleware(I18nMiddleware(get_translator_hub()))
+    dp.update.middleware(I18nMiddleware(get_translator_hub(project_dir)))
     dp.update.middleware(DbMiddleware(session_pool, config.nats.dsn))
 
     try:

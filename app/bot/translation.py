@@ -8,8 +8,8 @@ def _get_ftl_files(locale_dir: Path) -> list[Path]:
     return [file for file in locale_dir.iterdir() if file.is_file() and file.suffix == ".ftl"]
 
 
-def get_translator_hub() -> TranslatorHub:
-    locales_dir = Path(__file__).parent / "locales"
+def get_translator_hub(project_dir: Path) -> TranslatorHub:
+    locales_dir = project_dir / "locales"
     translator_hub = TranslatorHub(
         {"ru": "ru", "en": "en"},
         [
