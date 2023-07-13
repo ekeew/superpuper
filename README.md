@@ -1,9 +1,7 @@
-Awesome Bot [from Toster]
+Awesome Bot [от тостера]
 ===
 
-ДА, я использовал натс!!
-
-### PS
+### Запуск
 
 Заполни `.env.dist`, затем -> `.env`
 
@@ -11,4 +9,10 @@ Awesome Bot [from Toster]
 poetry install
 poetry run alembic upgrade head
 poetry run python -m app.bot
+```
+```shell
+poetry run taskiq worker app.core.workers.notify:broker
+```
+```shell
+poetry run taskiq scheduler app.core.workers.notify:scheduler
 ```
