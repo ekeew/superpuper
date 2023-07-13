@@ -18,11 +18,8 @@ class Settings(BaseSettings):
     bot: Bot
     postgres: Postgres
     nats: Nats
-    admin_ids_raw: str = Field(env="admin_ids")
-
-    @property
-    def admin_ids(self) -> tuple:
-        return tuple(map(int, self.admin_ids_raw.split(",")))
+    admin_id: int
+    sender_ids: list[int]
 
     class Config:
         env_file = Path(__file__).parent.parent.parent / ".env"
