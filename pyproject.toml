@@ -15,6 +15,8 @@ alembic = "^1.11.1"
 asyncpg = "^0.28.0"
 fluentogram = "^1.1.6"
 nats-py = "^2.3.1"
+taskiq = "^0.8.2"
+taskiq-nats = "^0.3.0"
 
 
 [build-system]
