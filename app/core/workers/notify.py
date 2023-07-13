@@ -33,10 +33,10 @@ async def startup(state: TaskiqState) -> None:
 @broker.on_event(TaskiqEvents.WORKER_SHUTDOWN)
 async def shutdown(state: TaskiqState) -> None:
     await state.bot.session.close()
-    await state.logger.warning("Scheduler stopped")
+    state.logger.warning("Scheduler stopped")
 
 
-@broker.task(task_name="notify", schedule=[{"cron": "* 12 * * *"}])
+@broker.task(task_name="notify", schedule=[{"cron": "*/1 * * * *"}])
 async def notify(context: Context = TaskiqDepends()) -> None:
     bot: Bot = context.state.bot
     admin_id: int = context.state.admin_id
