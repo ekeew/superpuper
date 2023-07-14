@@ -11,8 +11,8 @@ poetry run alembic upgrade head
 poetry run python -m app.bot
 ```
 ```shell
-poetry run taskiq worker app.core.workers.notify:broker
+poetry run taskiq worker app.core.services.notify:broker
 ```
 ```shell
-poetry run taskiq scheduler app.core.workers.notify:scheduler
+poetry run taskiq scheduler app.core.services.notify:scheduler
 ```
