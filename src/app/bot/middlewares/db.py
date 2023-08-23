@@ -4,7 +4,7 @@ from aiogram import BaseMiddleware
 from aiogram.types import TelegramObject
 from sqlalchemy.ext.asyncio import async_sessionmaker
 
-from app.core.db import DbRepo
+from src.app.core.db import DbRepo
 import nats
 
 

@@ -3,8 +3,8 @@ from aiogram.filters import Command, CommandObject
 from aiogram.types import Message
 from fluentogram import TranslatorRunner
 
-from app.core.config import Settings
-from app.core.db import DbRepo
+from src.app.core.config import Settings
+from src.app.core.db import DbRepo
 
 
 async def cmd_send(message: Message, command: CommandObject, db: DbRepo, i18n: TranslatorRunner) -> None:

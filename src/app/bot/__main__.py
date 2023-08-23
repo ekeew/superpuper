@@ -6,8 +6,8 @@ import nats
 from aiogram import Bot, Dispatcher
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
 
-from app.core.config import Settings
-from app.core.services import mailing
+from src.app.core.config import Settings
+from src.app.core.services import mailing
 from .handlers import get_main_router
 from .middlewares import I18nMiddleware, DbMiddleware
 from .translation import get_translator_hub

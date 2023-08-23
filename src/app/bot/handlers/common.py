@@ -3,7 +3,7 @@ from aiogram.filters import CommandStart, Command
 from aiogram.types import Message, BotCommandScopeChat
 from fluentogram import TranslatorRunner
 
-from app.core.db import DbRepo
+from src.app.core.db import DbRepo
 from ..ui import get_default_commands
 
 
