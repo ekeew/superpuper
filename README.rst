@@ -11,13 +11,13 @@ Awesome Application
 
     poetry install
     poetry run alembic upgrade head
-    poetry run python -m awesome.telegram
+    poetry run python -m src.awesome
 
 .. code-block:: shell
 
-    poetry run taskiq worker awesome.core.services.notify:broker
+    poetry run taskiq worker awesome.services.notify:broker
 
 .. code-block:: shell
 
-    poetry run taskiq scheduler awesome.core.services.notify:scheduler
+    poetry run taskiq scheduler awesome.services.notify:scheduler
 
