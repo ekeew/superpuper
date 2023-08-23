@@ -20,7 +20,6 @@ async def main() -> None:
     )
     logger = logging.getLogger(__name__)
 
-    project_dir = Path(__file__).parent.parent.parent
     config = Settings()
 
     bot = Bot(token=config.bot.token.get_secret_value())
@@ -33,14 +32,14 @@ async def main() -> None:
     stream = client.jetstream()
 
     dp.include_router(get_main_router())
-    dp.update.middleware(I18nMiddleware(get_translator_hub(project_dir)))
+    dp.update.middleware(I18nMiddleware(get_translator_hub(config.project_dir)))
     dp.update.middleware(DatabaseMiddleware(session_pool))
     dp.update.middleware(BrokerMiddleware(config.nats.dsn))
 
     try:
         logger.warning("Running bot")
         await asyncio.gather(
-            dp.start_polling(bot, allowed_updates=dp.resolve_used_update_types()),
+            dp.start_polling(bot),
             mailing.main(stream, bot)
         )
     finally:
