@@ -3,13 +3,13 @@ from aiogram.filters import CommandStart, Command
 from aiogram.types import Message, BotCommandScopeChat
 from fluentogram import TranslatorRunner
 
-from src.app.core.db import DbRepo
+from src.app.core.interfaces import dao
 from ..ui import get_default_commands
 
 
-async def cmd_start(message: Message, bot: Bot, db: DbRepo, i18n: TranslatorRunner) -> None:
-    if await db.user.add(message.from_user.id):
-        await db.commit()
+async def cmd_start(message: Message, bot: Bot, database: dao.BaseDatabase, i18n: TranslatorRunner) -> None:
+    if await database.user.add(message.from_user.id):
+        await database.commit()
         scope = BotCommandScopeChat(chat_id=message.chat.id)
         await bot.set_my_commands(get_default_commands(i18n), scope)
 

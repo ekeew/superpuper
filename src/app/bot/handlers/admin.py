@@ -4,12 +4,18 @@ from aiogram.types import Message
 from fluentogram import TranslatorRunner
 
 from src.app.core.config import Settings
-from src.app.core.db import DbRepo
+from src.app.core.interfaces import dao
 
 
-async def cmd_send(message: Message, command: CommandObject, db: DbRepo, i18n: TranslatorRunner) -> None:
-    for user_id in await db.user.get_all_ids():
-        await db.worker.send_message(user_id, command.args)
+async def cmd_send(
+        message: Message,
+        command: CommandObject,
+        database: dao.BaseDatabase,
+        broker: dao.BaseBroker,
+        i18n: TranslatorRunner
+) -> None:
+    for user_id in await database.user.get_all_ids():
+        await broker.mailing.send_message(user_id, command.args)
     await message.answer(i18n.get("success-mailing"))
 
 
