@@ -6,11 +6,11 @@ import nats
 from aiogram import Bot, Dispatcher
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
 
-from src.app.core.config import Settings
+from app.bot.handlers import get_main_router
+from app.bot.middlewares import I18nMiddleware, DatabaseMiddleware, BrokerMiddleware
+from app.bot.translation import get_translator_hub
 from app.services import mailing
-from .handlers import get_main_router
-from .middlewares import I18nMiddleware, DbMiddleware
-from .translation import get_translator_hub
+from src.app.core.config import Settings
 
 
 async def main() -> None:
@@ -34,7 +34,8 @@ async def main() -> None:
 
     dp.include_router(get_main_router())
     dp.update.middleware(I18nMiddleware(get_translator_hub(project_dir)))
-    dp.update.middleware(DbMiddleware(session_pool, config.nats.dsn))
+    dp.update.middleware(DatabaseMiddleware(session_pool))
+    dp.update.middleware(BrokerMiddleware(config.nats.dsn))
 
     try:
         logger.warning("Running bot")
@@ -51,5 +52,5 @@ async def main() -> None:
 if __name__ == "__main__":
     try:
         asyncio.run(main())
-    except KeyboardInterrupt:
+    except (KeyboardInterrupt, SystemExit):
         pass
