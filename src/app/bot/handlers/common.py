@@ -1,5 +1,5 @@
 from aiogram import Router, Bot
-from aiogram.filters import CommandStart, Command
+from aiogram.filters import Command
 from aiogram.types import Message, BotCommandScopeChat
 from fluentogram import TranslatorRunner
 
@@ -23,7 +23,7 @@ async def cmd_hello(message: Message, i18n: TranslatorRunner) -> None:
 def get_common_router() -> Router:
     router = Router()
 
-    router.message.register(cmd_start, CommandStart())
+    router.message.register(cmd_start, Command("start"))
     router.message.register(cmd_hello, Command("hello"))
 
     return router
