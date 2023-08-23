@@ -1,7 +1,9 @@
 from nats import NATS
 
+from app.core.interfaces.dao import BaseMailing
 
-class _WorkerRepo:
+
+class Mailing(BaseMailing):
     def __init__(self, client: NATS) -> None:
         self.client = client
         self.stream = client.jetstream()
