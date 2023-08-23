@@ -10,14 +10,14 @@ Awesome Application
 .. code-block:: shell
 
     poetry install
-    poetry run alembic upgrade head
-    poetry run python -m src.awesome
+    alembic upgrade head
+    python -m src.awesome
 
 .. code-block:: shell
 
-    poetry run taskiq worker awesome.services.notify:broker
+    taskiq worker awesome.services.notify:broker
 
 .. code-block:: shell
 
-    poetry run taskiq scheduler awesome.services.notify:scheduler
+    taskiq scheduler awesome.services.notify:scheduler
 
