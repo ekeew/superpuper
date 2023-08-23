@@ -1,7 +1,8 @@
-from .db import DbMiddleware
+from .dao import DatabaseMiddleware, BrokerMiddleware
 from .i18n import I18nMiddleware
 
 __all__ = (
-    "DbMiddleware",
+    "DatabaseMiddleware",
+    "BrokerMiddleware",
     "I18nMiddleware"
 )
