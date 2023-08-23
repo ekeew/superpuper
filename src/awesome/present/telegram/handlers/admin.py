@@ -4,14 +4,14 @@ from aiogram.types import Message
 from fluentogram import TranslatorRunner
 
 from awesome.core.config import Settings
-from awesome.core.interfaces import dao
+from awesome.core.interfaces import dao, adapters
 
 
 async def cmd_send(
         message: Message,
         command: CommandObject,
         database: dao.BaseDatabase,
-        broker: dao.BaseBroker,
+        broker: adapters.BaseBroker,
         i18n: TranslatorRunner
 ) -> None:
     for user_id in await database.user.get_all_ids():
