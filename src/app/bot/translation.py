@@ -13,8 +13,8 @@ def get_translator_hub(project_dir: Path) -> TranslatorHub:
     translator_hub = TranslatorHub(
         {"ru": "ru", "en": "en"},
         [
-            FluentTranslator("ru", FluentBundle.from_files("ru-RU", _get_ftl_files(locales_dir / "ru"))),
-            FluentTranslator("en", FluentBundle.from_files("en-US", _get_ftl_files(locales_dir / "en"))),
+            FluentTranslator("ru", FluentBundle.from_files("ru-RU", _get_ftl_files(locales_dir / "ru-RU"))),
+            FluentTranslator("en", FluentBundle.from_files("en-US", _get_ftl_files(locales_dir / "en-US"))),
         ]
     )
     return translator_hub
