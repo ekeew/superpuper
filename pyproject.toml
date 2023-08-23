@@ -2,9 +2,9 @@
 name = "awesome-bot"
 version = "0.1.0"
 description = "Awesome Bot from Toster"
-authors = ["Toster dsodx@pm.me"]
+authors = ["Yarik dsodx@pm.me"]
 readme = "README.md"
-packages = [{include = "awesome_bot"}]
+packages = [{include = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
