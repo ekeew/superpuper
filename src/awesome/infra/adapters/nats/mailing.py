@@ -1,6 +1,6 @@
 from nats import NATS
 
-from app.core.interfaces.dao import BaseMailing
+from awesome.core.interfaces.dao import BaseMailing
 
 
 class Mailing(BaseMailing):

@@ -3,8 +3,8 @@ from aiogram.filters import Command, CommandObject
 from aiogram.types import Message
 from fluentogram import TranslatorRunner
 
-from src.app.core.config import Settings
-from src.app.core.interfaces import dao
+from awesome.core.config import Settings
+from awesome.core.interfaces import dao
 
 
 async def cmd_send(

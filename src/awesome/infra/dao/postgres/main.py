@@ -1,6 +1,6 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.core.interfaces.dao import BaseDatabase
+from awesome.core.interfaces.dao import BaseDatabase
 from .user import User
 
 

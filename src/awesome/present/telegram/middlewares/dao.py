@@ -5,7 +5,7 @@ from aiogram import BaseMiddleware
 from aiogram.types import TelegramObject
 from sqlalchemy.ext.asyncio import async_sessionmaker
 
-from src.app.core import dao
+from awesome.infra import dao, adapters
 
 
 class DatabaseMiddleware(BaseMiddleware):
@@ -34,7 +34,7 @@ class BrokerMiddleware(BaseMiddleware):
             data: dict[str, Any]
     ) -> Any:
         client = await nats.connect([self._dsn])
-        data["broker"] = dao.NatsBroker(client)
+        data["broker"] = adapters.NatsBroker(client)
         result = await handler(event, data)
         await client.close()
         return result

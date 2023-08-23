@@ -1,6 +1,6 @@
 from nats import NATS
 
-from app.core.interfaces.adapters import BaseBroker
+from awesome.core.interfaces.adapters import BaseBroker
 from .mailing import Mailing
 
 

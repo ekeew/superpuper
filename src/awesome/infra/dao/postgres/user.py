@@ -1,7 +1,7 @@
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.core.interfaces.dao import BaseUser
+from awesome.core.interfaces.dao import BaseUser
 from . import models
 
 

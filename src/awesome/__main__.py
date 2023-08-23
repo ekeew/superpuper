@@ -5,11 +5,11 @@ import nats
 from aiogram import Bot, Dispatcher
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
 
-from app.present.telegram.handlers import get_main_router
-from app.present.telegram.middlewares import I18nMiddleware, DatabaseMiddleware, BrokerMiddleware
-from app.present.telegram.translation import get_translator_hub
-from app.services import mailing
-from src.app.core.config import Settings
+from awesome.present.telegram.handlers import get_main_router
+from awesome.present.telegram.middlewares import I18nMiddleware, DatabaseMiddleware, BrokerMiddleware
+from awesome.present.telegram.translation import get_translator_hub
+from awesome.services import mailing
+from awesome.core.config import Settings
 
 
 async def main() -> None:

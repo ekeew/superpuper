@@ -3,7 +3,7 @@ from aiogram.filters import Command
 from aiogram.types import Message, BotCommandScopeChat
 from fluentogram import TranslatorRunner
 
-from src.app.core.interfaces import dao
+from awesome.core.interfaces import dao
 from ..ui import get_default_commands
 
 
