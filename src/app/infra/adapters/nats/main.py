@@ -1,10 +1,10 @@
 from nats import NATS
 
-from app.core.interfaces.dao import BaseBroker
+from app.core.interfaces.adapters import BaseBroker
 from .mailing import Mailing
 
 
-class Broker(BaseBroker):
+class NatsBroker(BaseBroker):
     def __init__(self, client: NATS) -> None:
         self.client = client
         self.mailing = Mailing(client)

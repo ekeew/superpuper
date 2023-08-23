@@ -8,7 +8,7 @@ Awesome Bot [от тостера]
 ```shell
 poetry install
 poetry run alembic upgrade head
-poetry run python -m app.bot
+poetry run python -m app.telegram
 ```
 ```shell
 poetry run taskiq worker app.core.services.notify:broker

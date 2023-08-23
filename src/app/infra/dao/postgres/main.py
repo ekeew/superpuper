@@ -4,7 +4,7 @@ from app.core.interfaces.dao import BaseDatabase
 from .user import User
 
 
-class Database(BaseDatabase):
+class PostgresDb(BaseDatabase):
     def __init__(self, session: AsyncSession) -> None:
         self.session = session
         self.user = User(session)

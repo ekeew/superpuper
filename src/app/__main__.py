@@ -1,14 +1,13 @@
 import asyncio
 import logging
-from pathlib import Path
 
 import nats
 from aiogram import Bot, Dispatcher
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
 
-from app.bot.handlers import get_main_router
-from app.bot.middlewares import I18nMiddleware, DatabaseMiddleware, BrokerMiddleware
-from app.bot.translation import get_translator_hub
+from app.present.telegram.handlers import get_main_router
+from app.present.telegram.middlewares import I18nMiddleware, DatabaseMiddleware, BrokerMiddleware
+from app.present.telegram.translation import get_translator_hub
 from app.services import mailing
 from src.app.core.config import Settings
 
@@ -37,7 +36,7 @@ async def main() -> None:
     dp.update.middleware(BrokerMiddleware(config.nats.dsn))
 
     try:
-        logger.warning("Running bot")
+        logger.warning("Running telegram")
         await asyncio.gather(
             dp.start_polling(bot),
             mailing.main(stream, bot)

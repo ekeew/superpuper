@@ -19,7 +19,7 @@ class DatabaseMiddleware(BaseMiddleware):
             data: dict[str, Any]
     ) -> Any:
         async with self.session_pool() as session:
-            data["db"] = dao.Database(session)
+            data["db"] = dao.PostgresDb(session)
             return await handler(event, data)
 
 
@@ -34,7 +34,7 @@ class BrokerMiddleware(BaseMiddleware):
             data: dict[str, Any]
     ) -> Any:
         client = await nats.connect([self._dsn])
-        data["broker"] = dao.Broker(client)
+        data["broker"] = dao.NatsBroker(client)
         result = await handler(event, data)
         await client.close()
         return result
