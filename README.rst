@@ -11,7 +11,14 @@ Awesome Application
 
     poetry install
     alembic upgrade head
-    python -m src.awesome
+
+.. code-block:: shell
+
+    python -m src.awesome.presentation.bot
+
+.. code-block:: shell
+
+    python -m src.awesome.presentation.services
 
 .. code-block:: shell
 
