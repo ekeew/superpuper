@@ -1,10 +1,14 @@
 from abc import ABC, abstractmethod
 
 
-class BaseUser(ABC):
+class BaseUserDAO(ABC):
 
     @abstractmethod
-    async def add(self, tg_id: int) -> bool:
+    async def commit(self) -> None:
+        raise NotImplementedError
+
+    @abstractmethod
+    async def add_one(self, tid: int) -> bool:
         raise NotImplementedError
 
     @abstractmethod

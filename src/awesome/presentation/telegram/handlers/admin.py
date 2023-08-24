@@ -3,7 +3,7 @@ from aiogram.filters import Command, CommandObject
 from aiogram.types import Message
 from fluentogram import TranslatorRunner
 
-from awesome.core.config import Settings
+from awesome.infrastructure.config import Settings
 from awesome.core.interfaces import dao, adapters
 
 

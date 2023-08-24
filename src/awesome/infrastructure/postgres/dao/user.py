@@ -1,22 +1,22 @@
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from awesome.core.interfaces.dao import BaseUser
+from awesome.application.user.dao import BaseUserDAO
 from .. import models
 
 
-class User(BaseUser):
+class UserDAO(BaseUserDAO):
     def __init__(self, session: AsyncSession) -> None:
         self.session = session
 
     async def commit(self) -> None:
         await self.session.commit()
 
-    async def add(self, tg_id: int) -> bool:
-        if await self.session.get(User, tg_id) is None:
-            self.session.add(models.User(tg_id=tg_id))
+    async def add_one(self, tid: int) -> bool:
+        if await self.session.get(models.User, tid) is None:
+            self.session.add(models.User(tid=tid))
             return True
         return False
 
     async def get_all_ids(self) -> list[int]:
-        return list(await self.session.scalars(select(models.User.tg_id).limit(None)))
+        return list(await self.session.scalars(select(models.User.tid).limit(None)))

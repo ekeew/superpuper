@@ -4,7 +4,7 @@ import logging
 from aiogram import Bot, Dispatcher
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
 
-from awesome.core.config import Settings
+from awesome.infrastructure.config import Settings
 from awesome.presentation.telegram.handlers import get_main_router
 from awesome.presentation.telegram.middlewares import I18nMiddleware, DatabaseMiddleware, BrokerMiddleware
 from awesome.presentation.telegram.translation import get_translator_hub

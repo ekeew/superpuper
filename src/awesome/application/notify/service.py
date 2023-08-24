@@ -7,7 +7,7 @@ from taskiq import TaskiqScheduler, TaskiqEvents, TaskiqState, Context, TaskiqDe
 from taskiq.schedule_sources import LabelScheduleSource
 from taskiq_nats import NatsBroker
 
-from awesome.core.config import Settings
+from awesome.infrastructure.config import Settings
 
 config = Settings()
 broker = NatsBroker(config.nats.dsn, queue="notifying")

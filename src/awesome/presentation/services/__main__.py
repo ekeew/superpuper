@@ -5,7 +5,7 @@ import nats
 from aiogram import Bot
 
 from awesome.application.mailing import Mailing
-from awesome.core.config import Settings
+from awesome.infrastructure.config import Settings
 from awesome.infrastructure.nats.adapter import MailAdapter
 
 

@@ -11,7 +11,7 @@ class Mailing:
         self.bot = bot
         self.adapter = mail_adapter
 
-    async def add_mails(self, text: str, chat_ids: list[int]) -> None:
+    async def add_mails(self, chat_ids: list[int], text: str) -> None:
         for chat_id in chat_ids:
             await self.adapter.send_message(chat_id, text)
 
