@@ -1,15 +1,13 @@
 import asyncio
 import logging
 
-import nats
 from aiogram import Bot, Dispatcher
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
 
-from awesome.present.telegram.handlers import get_main_router
-from awesome.present.telegram.middlewares import I18nMiddleware, DatabaseMiddleware, BrokerMiddleware
-from awesome.present.telegram.translation import get_translator_hub
-from awesome.services import mailing
 from awesome.core.config import Settings
+from awesome.presentation.telegram.handlers import get_main_router
+from awesome.presentation.telegram.middlewares import I18nMiddleware, DatabaseMiddleware, BrokerMiddleware
+from awesome.presentation.telegram.translation import get_translator_hub
 
 
 async def main() -> None:
@@ -27,22 +25,15 @@ async def main() -> None:
     engine = create_async_engine(config.postgres.dsn)
     session_pool = async_sessionmaker(engine, expire_on_commit=False)
 
-    client = await nats.connect([config.nats.dsn])
-    stream = client.jetstream()
-
     dp.include_router(get_main_router())
     dp.update.middleware(I18nMiddleware(get_translator_hub(config.project_dir)))
     dp.update.middleware(DatabaseMiddleware(session_pool))
     dp.update.middleware(BrokerMiddleware(config.nats.dsn))
 
     try:
-        logger.warning("Running telegram")
-        await asyncio.gather(
-            dp.start_polling(bot),
-            mailing.main(stream, bot)
-        )
+        logger.warning("Bot started")
+        await dp.start_polling(bot)
     finally:
-        await client.drain()
         await dp.storage.close()
         logger.warning("Bot stopped")
 

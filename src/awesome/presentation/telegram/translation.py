@@ -9,7 +9,7 @@ def _get_ftl_files(locale_dir: Path) -> list[Path]:
 
 
 def get_translator_hub(project_dir: Path) -> TranslatorHub:
-    locales_dir = project_dir / "locales"
+    locales_dir = project_dir / "src" / "locales"
     translator_hub = TranslatorHub(
         {"ru": "ru", "en": "en"},
         [
