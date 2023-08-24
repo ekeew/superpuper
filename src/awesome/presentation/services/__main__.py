@@ -5,7 +5,7 @@ import nats
 from aiogram import Bot
 
 from awesome.application.mailing import Mailing
-from awesome.infrastructure.config import Settings
+from awesome.infrastructure.config import ApplicationSettings
 from awesome.infrastructure.nats.adapter import MailAdapter
 
 
@@ -16,7 +16,7 @@ async def main() -> None:
     )
     logger = logging.getLogger(__name__)
 
-    config = Settings()
+    config = ApplicationSettings()
 
     bot = Bot(config.bot.token.get_secret_value())
     client = await nats.connect([config.nats.dsn])
