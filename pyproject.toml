@@ -20,6 +20,9 @@ taskiq-nats = "^0.3.0"
 pydantic-settings = "^2.0.3"
 
 
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
